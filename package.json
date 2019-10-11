@@ -1,5 +1,5 @@
 {
-  "name": "appr",
+  "name": "expo-release-maker",
   "version": "2.0.0",
   "description": "Pull Request Review Apps for create-react-native-app / Expo",
   "main": "index.js",
