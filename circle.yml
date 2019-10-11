@@ -3,4 +3,4 @@ dependencies:
     - yarn
 machine:
   node:
-    version: 6.9
+    version: 12

@@ -7,8 +7,8 @@
     "test": "eslint scripts/"
   },
   "engines": {
-    "node": ">= 6.4.0",
-    "npm": ">= 2"
+    "node": ">= 12",
+    "npm": ">= 6"
   },
   "repository": {
     "type": "git",
@@ -32,9 +32,7 @@
     "eslint-plugin-import": "^2.2.0"
   },
   "dependencies": {
-    "request": "^2.81.0"
-  },
-  "peerDependencies": {
-    "exp": ">= 48"
+    "request": "^2.81.0",
+    "expo-cli": "^3.3.0"
   }
 }

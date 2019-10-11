@@ -6,25 +6,26 @@ const log = require('./scripts/log');
 const preDeploy = require('./scripts/pre-deploy');
 const postDeploy = require('./scripts/post-deploy');
 const getExpChannelName = require('./scripts/utils').getExpChannelName;
-const localExp = './node_modules/exp/bin/exp.js';
+const localExp = './node_modules/expo-cli/bin/expo.js';
 log('Logging into Expo...');
-spawn(localExp, ['login', '-u', config.expUsername, '-p', config.expPassword, '--non-interactive'], loginError => {
-  if (loginError) {
-    throw new Error('Failed to log into Expo');
-  } else {
-    log('Logged into Expo.');
-    log('Preparing project for publish...');
-    preDeploy();
-  }
-
-  log('Publishing project into Expo.');
-  spawn(localExp, ['publish', '--release-channel', getExpChannelName()], publishError => {
-    if (publishError) {
-      throw new Error('Failed to publish package to Expo');
+spawn(localExp, ['login', '-u', config.expUsername, '-p',
+  config.expPassword, '--non-interactive'], loginError => {
+    if (loginError) {
+      throw new Error('Failed to log into Expo');
     } else {
-      log('Published project.');
-      log('Notifying GitHub...');
-      postDeploy();
+      log('Logged into Expo.');
+      log('Preparing project for publish...');
+      preDeploy();
     }
+
+    log('Publishing project into Expo.');
+    spawn(localExp, ['publish', '--release-channel', getExpChannelName()], publishError => {
+      if (publishError) {
+        throw new Error('Failed to publish package to Expo');
+      } else {
+        log('Published project.');
+        log('Notifying GitHub...');
+        postDeploy();
+      }
+    });
   });
-});
