@@ -19,6 +19,7 @@ spawn(localExp, ['login', '-u', config.expUsername, '-p',
     }
 
     log('Publishing project into Expo.');
+    /*
     spawn(localExp, ['publish', '--release-channel', getExpChannelName()], publishError => {
       if (publishError) {
         throw new Error('Failed to publish package to Expo');
@@ -28,4 +29,5 @@ spawn(localExp, ['login', '-u', config.expUsername, '-p',
         postDeploy();
       }
     });
+    */
   });
